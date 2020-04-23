@@ -330,3 +330,4 @@ IdentStr operator+(const char *pobj1, const IdentStr &pobj2)
     //cout << "IdentStr operator + (const char* pobj2, const IdentStr pobj1)" << endl;
 
     //return tmp;
+}

@@ -1,5 +1,6 @@
-#include "desStr.h"
-
+#include "DesStr.h"
+#include<string.h>
+#include<cstdlib>
 DecStr::DecStr(int val) : Stroka(val)
 
 {
@@ -18,25 +19,7 @@ DecStr::DecStr(const char *Str) : Stroka(Str)
 
 {
 
-    if (!((pCh[0] >= '1' && pCh[0] <= '9') || (pCh[0] == '-' && pCh[0] == '+') || pCh[0] != '0'))
-
-    {
-
-        cout << "Bad Simvol, pCh[0]=" << pCh[0] << endl;
-
-        if (pCh)
-            delete[] pCh;
-
-        len = 0;
-
-        pCh = new char[len + 1];
-
-        pCh[0] = '\0';
-
-        return;
-    }
-
-    for (int i = 1; i < len; i++)
+    for (int i = 0; i < len; i++)
 
     {
 
@@ -49,11 +32,12 @@ DecStr::DecStr(const char *Str) : Stroka(Str)
             if (pCh)
                 delete[] pCh;
 
-            len = 0;
+            len = 1;
 
             pCh = new char[len + 1];
 
-            pCh[0] = '\0';
+            pCh[0] = '0';
+            pCh[1]='\0';
 
             return;
         }
@@ -101,9 +85,9 @@ DecStr operator+(const DecStr &pobj1, const DecStr &pobj2)
 
     int num1, num2;
 
-    DecStr tmp(pobj1);
+    DecStr tmp;
 
-    num1 = atoi(tmp.GetStr());
+    num1 = atoi(pobj1.GetStr());
 
     num2 = atoi(pobj2.GetStr());
 
@@ -113,11 +97,11 @@ DecStr operator+(const DecStr &pobj1, const DecStr &pobj2)
 
     int A = num1 + num2;
 
-    if (tmp.len >= pobj2.len)
+    if (pobj1.len >= pobj2.len)
 
     {
 
-        pTmpCh = new char[tmp.len + 1];
+        pTmpCh = new char[pobj1.len + 1];
     }
     else
 
@@ -125,9 +109,8 @@ DecStr operator+(const DecStr &pobj1, const DecStr &pobj2)
 
         pTmpCh = new char[pobj2.len + 1];
     }
-
-    _itoa();
-
+    
+    sprintf(pTmpCh,"%d",A);
     if (tmp.pCh)
         delete[] tmp.pCh;
 
@@ -142,3 +125,4 @@ DecStr operator+(const DecStr &pobj1, const DecStr &pobj2)
     cout << "DecStr operator + (const DecStr& pobj1,const DecStr& pobj2)" << endl;
 
     return tmp;
+}

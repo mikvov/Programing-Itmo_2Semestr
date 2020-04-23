@@ -12,6 +12,7 @@ private:
     /* data */
 public:
     ~Stroka();
+    Stroka();
     Stroka(int = 0);
     Stroka(char);
     Stroka(const char *);

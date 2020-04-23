@@ -7,8 +7,6 @@ class DecStr : public Stroka
 public:
     DecStr(int = 0);
 
-    //DecStr(char);
-
     DecStr(const char *);
 
     DecStr(const DecStr &);

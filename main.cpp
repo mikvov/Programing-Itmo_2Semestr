@@ -1,12 +1,13 @@
 #include<string.h>
 #include<iostream>
-#include"Stroka.h"
+#include"DesStr.h"
 using namespace std;
 
 
 int main(){
-    Stroka obj("INMO");
-    Stroka obj2=obj;
-    cout<<obj2.GetStr()<<endl;
+    DecStr a("100");
+    DecStr b("10");
+    DecStr c=a+b;
+    cout<<c.GetStr()<<endl;
     return 0;
 }
